@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import com.elvishew.xlog.XLog;
+
 /**
  * Created by Administrator on 2016/12/14.
  */

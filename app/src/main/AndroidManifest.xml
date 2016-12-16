@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application
+        android:name=".InitApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -23,15 +24,16 @@
 
         <receiver android:name=".SendMessageSuccess">
             <intent-filter>
-                <action android:name="SENDMESSAGESUCCESS"></action>
+                <action android:name="SENDMESSAGESUCCESS" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".acceptSuccess">
+            <intent-filter>
+                <action android:name="ACCEPTMESSAGESUCCESS" />
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".acceptSuccess">
-            <intent-filter>
-                <action android:name="ACCEPTMESSAGESUCCESS"></action>
-            </intent-filter>
-        </receiver>
+        <activity android:name=".DetailResultActivity"></activity>
     </application>
 
 </manifest>
