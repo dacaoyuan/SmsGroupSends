@@ -2,9 +2,11 @@ package com.eveyoo.sendmessagedaemon;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.widget.TextView;
 
 import com.eveyoo.sendmessagedaemon.utils.Constans;
+import com.eveyoo.sendmessagedaemon.utils.PhoneNumberUtils;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -29,7 +31,27 @@ public class DetailResultActivity extends AppCompatActivity {
         ButterKnife.inject(this);
 
         antipateNumbers.setText(Constans.antipateNumbers + "");
+        succeedNumbers.setText(Constans.acceptSuccessNumbers + "");
 
+
+        succeedPhoneNumber.setText(PhoneNumberUtils.readPhoneNumber(this));
+
+
+        int failure = Constans.antipateNumbers - Constans.acceptSuccessNumbers;
+        failureNumbers.setText(failure + "");
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PhoneNumberUtils.deletePhoneNumber(this);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+       // finish();
+        return false;
+    }
+
 }

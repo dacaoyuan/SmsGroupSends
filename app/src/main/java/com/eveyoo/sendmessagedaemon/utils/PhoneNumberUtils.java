@@ -1,10 +1,15 @@
 package com.eveyoo.sendmessagedaemon.utils;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.elvishew.xlog.XLog;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by abc on 2016/12/15.
@@ -118,6 +123,24 @@ public class PhoneNumberUtils {
         Pattern p = Pattern.compile("^(?![^a-zA-Z]+$)(?!\\D+$)[0-9a-zA-Z]{8,16}$");
         Matcher m = p.matcher(pwd);
         return m.matches();
+    }
+
+
+    public static void savaPhoneNumber(Context context, String acceptPhone) {
+        SharedPreferences.Editor editor = context.getSharedPreferences("accept_phone", MODE_PRIVATE).edit();
+        editor.putString("phone_number", acceptPhone);
+        editor.commit();
+    }
+
+    public static String readPhoneNumber(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences("accept_phone", MODE_PRIVATE);
+        return preferences.getString("phone_number", "0");
+    }
+
+    public static void deletePhoneNumber(Context context) {
+        SharedPreferences.Editor editor = context.getSharedPreferences("accept_phone", MODE_PRIVATE).edit();
+        editor.remove("phone_number");
+        editor.commit();
     }
 
 

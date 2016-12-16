@@ -117,32 +117,31 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         smsManager.sendTextMessage(strPhoneNumber, null, contentText, sentPI, acceptPI);
                     }
-
-                    progressDialog.show();
-                    //建议在这里 加上发送等待延时5-10s，在跳转
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            progressDialog.dismiss();
-                            startActivity(new Intent(MainActivity.this, DetailResultActivity.class));
-                        }
-                    }, 6 * 1000);
-
-                    /*Timer timer = new Timer();
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-
-                        }
-                    }, 6 * 1000);*/
-
-
                 }
+
+                progressDialog.show();
+                //建议在这里 加上发送等待延时5-10s，在跳转
+                /*new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressDialog.dismiss();
+                        startActivity(new Intent(MainActivity.this, DetailResultActivity.class));
+                    }
+                }, 6 * 1000);*/
+
+
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        progressDialog.dismiss();
+                        startActivity(new Intent(MainActivity.this, DetailResultActivity.class));
+                    }
+                }, 10 * 1000);
 
             } else {
                 Toast.makeText(this, "格式错误！", Toast.LENGTH_SHORT).show();
             }
-
 
         }
     }
