@@ -32,7 +32,7 @@
                 style="@style/DetailResultActivityTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="预计发送个数：" />
+                android:text="成功发送个数：" />
 
             <TextView
                 android:id="@+id/antipate_numbers"
@@ -40,6 +40,19 @@
                 android:layout_height="wrap_content"
                 android:text="10" />
 
+            <TextView
+                style="@style/DetailResultActivityTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="失败个数：" />
+
+            <TextView
+                android:id="@+id/send_failure_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="无" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -52,13 +65,13 @@
                 style="@style/DetailResultActivityTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="失败个数：" />
+                android:text="未送达个数：" />
 
             <TextView
                 android:id="@+id/failure_numbers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0" />
+                android:text="无" />
 
         </LinearLayout>
 
@@ -71,14 +84,14 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView6"
             android:layout_marginTop="@dimen/layout_marginTop"
-            android:text="失败手机号为：" />
+            android:text="未送达手机号为：" />
 
         <TextView
             android:id="@+id/failure_phone_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/layout_marginTop"
-            android:text="18865526389,18865526389" />
+            android:text="无" />
 
 
         <LinearLayout
@@ -91,14 +104,14 @@
                 style="@style/DetailResultActivityTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="成功个数：" />
+                android:text="成功送达个数：" />
 
 
             <TextView
                 android:id="@+id/succeed_numbers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10" />
+                android:text="暂无" />
 
 
         </LinearLayout>
@@ -111,16 +124,24 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView6"
             android:layout_marginTop="@dimen/layout_marginTop"
-            android:text="成功手机号为：" />
+            android:text="成功送达手机号为：" />
 
         <TextView
             android:id="@+id/succeed_phone_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/layout_marginTop"
-            android:text="18865526389,18865526389" />
+            android:text="暂无" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_marginTop"
+            android:gravity="bottom"
+            android:text="温馨提示：由于短信有延时，成功送达个数会实时更新！"
+            android:textColor="#d28080" />
 
     </LinearLayout>
+
 
 </ScrollView>

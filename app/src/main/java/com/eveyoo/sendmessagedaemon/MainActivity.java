@@ -98,14 +98,19 @@ public class MainActivity extends AppCompatActivity {
                 phoneNumberList = PhoneNumberUtils.dealWithString(phoneNumber);
                 Constans.antipateNumbers = phoneNumberList.size();
 
+
                 for (String strPhoneNumber : phoneNumberList) {
 
                     Intent sentIntent = new Intent("SENDMESSAGESUCCESS");
-                    sentIntent.putExtra("phoneNumber", strPhoneNumber);
+                    //sentIntent.putExtra("phoneNumber", strPhoneNumber);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("phoneNumber", strPhoneNumber);
+                    sentIntent.putExtra("sdd", bundle);
                     PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, sentIntent, 0);
 
                     Intent acceptIntent = new Intent("ACCEPTMESSAGESUCCESS");
                     acceptIntent.putExtra("phoneNumber", strPhoneNumber);
+
                     PendingIntent acceptPI = PendingIntent.getBroadcast(this, 0, acceptIntent, 0);
 
                     SmsManager smsManager = SmsManager.getDefault();
@@ -113,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                         List<String> contents = smsManager.divideMessage(contentText);
                         for (String sms : contents) {
                             smsManager.sendTextMessage(strPhoneNumber, null, sms, sentPI, acceptPI);
+
                         }
                     } else {
                         smsManager.sendTextMessage(strPhoneNumber, null, contentText, sentPI, acceptPI);
@@ -120,16 +126,6 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 progressDialog.show();
-                //建议在这里 加上发送等待延时5-10s，在跳转
-                /*new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        progressDialog.dismiss();
-                        startActivity(new Intent(MainActivity.this, DetailResultActivity.class));
-                    }
-                }, 6 * 1000);*/
-
-
                 Timer timer = new Timer();
                 timer.schedule(new TimerTask() {
                     @Override
@@ -137,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         startActivity(new Intent(MainActivity.this, DetailResultActivity.class));
                     }
-                }, 10 * 1000);
+                }, 3 * 1000);
 
             } else {
                 Toast.makeText(this, "格式错误！", Toast.LENGTH_SHORT).show();

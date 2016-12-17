@@ -22,6 +22,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".DetailResultActivity" />
+
         <receiver android:name=".SendMessageSuccess">
             <intent-filter>
                 <action android:name="SENDMESSAGESUCCESS" />
@@ -33,7 +35,7 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".DetailResultActivity"></activity>
+
     </application>
 
 </manifest>
